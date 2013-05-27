@@ -5,7 +5,7 @@ def do_check():
 	text = open("output.txt", "r").read()
 	regex_result = re.compile("(?P<node>\w+)\+*").search(text)
 	local_revision = regex_result.groupdict()['node']
-	r = requests.get('https://bitbucket.org/api/1.0/repositories/andrewking/web/changesets/?limit=1', auth=('andrew@univex.com', 'confused'))
+	r = requests.get('https://bitbucket.org/api/1.0/repositories/andrewking/web/changesets/?limit=1', auth=('myusername', 'mypassword'))
 	if r.status_code == 200:
 		result = r.json()
 		if result['changesets'][0]['node'] != local_revision:
